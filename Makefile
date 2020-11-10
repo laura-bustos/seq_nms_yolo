@@ -1,8 +1,12 @@
-GPU=1
-CUDNN=1
-OPENCV=1
+GPU=0
+CUDNN=0
+OPENCV=0
 OPENMP=0
 DEBUG=0
+
+
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH
 
 ARCH= -gencode arch=compute_30,code=sm_30 \
       -gencode arch=compute_35,code=sm_35 \
@@ -45,7 +49,7 @@ LDFLAGS+= `pkg-config --libs opencv`
 COMMON+= `pkg-config --cflags opencv` 
 endif
 
-ifeq ($(GPU), 1) 
+ifeq ($(GPU), 1)
 COMMON+= -DGPU -I/usr/local/cuda-8.0/include/
 CFLAGS+= -DGPU
 LDFLAGS+= -L/usr/local/cuda-8.0/lib64 -lcuda -lcudart -lcublas -lcurand
