@@ -16,11 +16,11 @@ ENVIRONMENT CREATION
 1. Activate the environment with `source activate ./env`;
 
 DEPENDENCIES NEEDED
-2. `conda install -y -c conda-forge opencv`;
-2. `conda install -y -c anaconda cudatoolkit=10.1`;
-2. `conda install -y cudnn=7.6.4`;
-2. `conda install -y numpy`;
-2. `conda install -y -c menpo imageio `;
+1. `conda install -y -c conda-forge opencv`;
+1. `conda install -y -c anaconda cudatoolkit=10.1`;
+1. `conda install -y cudnn=7.6.4`;
+1. `conda install -y numpy`;
+1. `conda install -y -c menpo imageio `;
 
 RUNNING THE CODE
 1. `make` the project;
