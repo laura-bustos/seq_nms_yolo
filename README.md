@@ -31,6 +31,7 @@ RUNNING THE CODE
 1. GPU acceleration is performed in Makefile for the specific parallel GPU's of the macbook pro, if working with a system with Nvidia GPU enable in the Makefile enable `CUDNN=1` and `GPU=1` and change change cuda-8.0 to cuda-10.1
 1. `make` the project
 1. Download `yolo.weights` and `tiny-yolo.weights` by running `wget https://pjreddie.com/media/files/yolo.weights` and `wget https://pjreddie.com/media/files/yolov2-tiny-voc.weights`
+1. Copy libdarknet.so and libdarknet.a to env/lib by running from the main directory `cp libdarknet.so env/lib/` and `cp libdarknet.a env/lib/`
 1. Copy a video file to the video folder, for example, `input.mp4`
 1. In the terminal go to the video folder
 1. In the video folder, run `python video2img.py -i input.mp4` and then `python get_pkllist.py`
