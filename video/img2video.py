@@ -3,7 +3,7 @@ import os, sys, getopt
 import glob
 
 def usage():
-    print 'python img2video.py -i <image folder>'
+    print('python img2video.py -i <image folder>')
 
 def main():
     try:
@@ -27,7 +27,7 @@ def main():
             assert False, "unhandled option"
 
     if not os.path.exists('output'):
-        print 'no output detected'
+        print('no output detected')
         sys.exit(2)
 
     video_name = 'output.mp4'
