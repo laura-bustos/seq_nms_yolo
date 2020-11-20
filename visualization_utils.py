@@ -29,7 +29,8 @@ import PIL.ImageDraw as ImageDraw
 import PIL.ImageFont as ImageFont
 import six
 import tensorflow as tf
-
+import os
+os.environ["KERAS_BACKEND"] = "plaidml.keras.backend"
 
 _TITLE_LEFT_MARGIN = 10
 _TITLE_TOP_MARGIN = 10

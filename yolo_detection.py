@@ -2,6 +2,8 @@ from ctypes import *
 import math
 import random
 import time
+import os
+os.environ["KERAS_BACKEND"] = "plaidml.keras.backend"
 
 def sample(probs):
     s = sum(probs)
@@ -110,7 +112,7 @@ def classify(net, meta, im):
     return res
 
 def detect(net, meta, image, thresh=.5, hier_thresh=.5, nms=.45):
-    im = load_image(image, 0, 0)
+    im = load_image(image.encode('utf-8'), 0, 0)
     boxes = make_boxes(net)
     probs = make_probs(net)
     num =   num_boxes(net)
@@ -126,24 +128,24 @@ def detect(net, meta, image, thresh=.5, hier_thresh=.5, nms=.45):
     return res
 
 def detect_img(filename, cfg="cfg/tiny-yolo.cfg", weights="tiny-yolo.weights", data="cfg/coco.data", thresh=.5, hier_thresh=.5, nms=.45):
-    net = load_net(cfg, weights, 0)
-    meta = load_meta(data)
+    net = load_net(cfg.encode('utf-8'), weights.encode('utf-8'), 0)
+    meta = load_meta(data.encode('utf-8'))
     start=time.time()
     r = detect(net, meta, filename, thresh=thresh, hier_thresh=hier_thresh, nms=nms)
     end=time.time()
-    print 'detection time:{:.4f}'.format(end-start)
-    print r
+    print('detection time:{:.4f}'.format(end-start))
+    print(r)
     return r
 
 def detect_imgs(filenames, cfg="cfg/yolo.cfg", weights="yolo.weights", data="cfg/coco.data", thresh=.5, hier_thresh=.5, nms=.45):
-    net = load_net(cfg, weights, 0)
-    meta = load_meta(data)
+    net = load_net(cfg.encode('utf-8'), weights.encode('utf-8'), 0)
+    meta = load_meta(data.encode('utf-8'))
     rs = []
     for i, filename in enumerate(filenames):
         start=time.time()
         r = detect(net, meta, filename, thresh=thresh, hier_thresh=hier_thresh, nms=nms)
         end=time.time()
-        print '({}/{})detection time:{:.4f}'.format(i+1, len(filenames), end-start)
+        print('({}/{})detection time:{:.4f}'.format(i+1, len(filenames), end-start))
         rs.append(r)
     return rs
 
@@ -157,5 +159,5 @@ if __name__ == "__main__":
     meta = load_meta("cfg/coco.data")
     re = detect(net, meta, "data/dog.jpg", nms=0)
     for objet_id, objet in enumerate(re):
-        print 'objet:{}'.format(objet_id+1)
-        print objet
+        print('objet:{}'.format(objet_id+1))
+        print (objet)
