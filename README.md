@@ -20,7 +20,11 @@ DEPENDENCIES NEEDED
 1. `conda install -y -c anaconda cudatoolkit=10.1`
 1. `conda install -y cudnn=7.6.4`
 1. `conda install -y numpy`
-1. `conda install -y -c menpo imageio `
+1. `conda install -y -c menpo imageio`
+1. `conda install -y matplotlib`
+1. `conda install -y -c anaconda scipy`
+1. `conda install -y -c conda-forge tensorflow`
+1. `pip install tensorflow-object-detection-api`
 
 RUNNING THE CODE
 1. Include in the Makefile the lib/pkgconfig folder from your environment in the PKG_CONFIG_PATH by setting `PKG_CONFIG_PATH=$PKG_CONFIG_PATH:./env/lib/pkgconfig` and then `export PKG_CONFIG_PATH`
@@ -28,6 +32,7 @@ RUNNING THE CODE
 1. `make` the project
 1. Download `yolo.weights` and `tiny-yolo.weights` by running `wget https://pjreddie.com/media/files/yolo.weights` and `wget https://pjreddie.com/media/files/yolov2-tiny-voc.weights`
 1. Copy a video file to the video folder, for example, `input.mp4`
+1. In the terminal go to the video folder
 1. In the video folder, run `python video2img.py -i input.mp4` and then `python get_pkllist.py`
 1. Return to root floder and run `python yolo_seqnms.py` to generate output images in `video/output`
 1. If you want to reconstruct a video from these output images, you can go to the video folder and run `python img2video.py -i output`
