@@ -23,6 +23,8 @@ DEPENDENCIES NEEDED
 1. `conda install -y -c menpo imageio `
 
 RUNNING THE CODE
+1. Include in the Makefile the lib/pkgconfig folder from your environment in the PKG_CONFIG_PATH by setting `PKG_CONFIG_PATH=$PKG_CONFIG_PATH:./env/lib/pkgconfig` and then `export PKG_CONFIG_PATH`
+1. GPU acceleration is performed in Makefile for the specific parallel GPU's of the macbook pro, if working with a system with Nvidia GPU enable in the Makefile enable `CUDNN=1` and `GPU=1` and change change cuda-8.0 to cuda-10.1
 1. `make` the project
 1. Download `yolo.weights` and `tiny-yolo.weights` by running `wget https://pjreddie.com/media/files/yolo.weights` and `wget https://pjreddie.com/media/files/yolov2-tiny-voc.weights`
 1. Copy a video file to the video folder, for example, `input.mp4`
